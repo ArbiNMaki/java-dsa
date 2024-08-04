@@ -11,9 +11,12 @@ public class LinearAndBinarySearch {
         int resultLinear = linearSearch(numbers, target);
         int resultBinarySearch = binarySearch(numbers, target2);
 
-        if (resultLinear != -1 || resultBinarySearch != -1) {
+        int bsBigONotation = bsWithBigONotation(numbers, target2, 0, numbers.length - 1);
+
+        if (resultLinear != -1 || resultBinarySearch != -1 || bsBigONotation != -1) {
             System.out.println("linearSearch = Element found at Index : " + resultLinear);
             System.out.println("binarySearch = Element found at Index : " + resultBinarySearch);
+            System.out.println("bsBigONotation = Element found at Index : " + bsBigONotation);
         } else  {
             System.out.println("Element not found!");
         }
@@ -50,6 +53,24 @@ public class LinearAndBinarySearch {
                 left = middle + 1;
             } else {
                 right = middle - 1;
+            }
+        }
+
+        System.out.println("Step taken by Binary : " + step);
+        return -1;
+    }
+
+    public static int bsWithBigONotation(int[] numbers, int target2, int left, int right) {
+        int step = 0;
+
+        if (left <= right) {
+            int middle = (left + right) / 2;
+            if (numbers[middle] == target2) {
+                return middle;
+            } else if (numbers[middle] < target2){
+                return bsWithBigONotation(numbers, target2, middle + 1, right);
+            } else {
+                return bsWithBigONotation(numbers, target2, left, middle -1);
             }
         }
 
