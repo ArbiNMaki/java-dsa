@@ -20,23 +20,31 @@ public class LinearAndBinarySearch {
     }
 
     public static int linearSearch(int[] numbers, int target) {
+        int step = 0;
+
         for (int i = 0; i < numbers.length; i++) {
+            step++;
             if (numbers[i] == target) {
+                System.out.println("Step taken by Linear : " + step);
                 return i;
             }
         }
 
+        System.out.println("Step taken by Linear : " + step);
         return -1;
     }
 
     public static int binarySearch(int[] numbers, int target2) {
+        int step = 0;
         int left = 0;
         int right = numbers.length - 1;
 
         while (left <= right) {
+            step++;
             int middle = (left + right) / 2;
 
             if (numbers[middle] == target2) {
+                System.out.println("Step taken by Binary : " + step);
                 return middle;
             } else if (numbers[middle] < target2){
                 left = middle + 1;
@@ -45,6 +53,7 @@ public class LinearAndBinarySearch {
             }
         }
 
+        System.out.println("Step taken by Binary : " + step);
         return -1;
     }
 }
